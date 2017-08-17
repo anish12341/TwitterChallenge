@@ -1,0 +1,142 @@
+#slider {
+    width: 90%;
+    height: 40%;
+	 border-radius: 10px;
+    overflow: hidden;
+	margin-left:5%;
+	margin-top:3%;
+	margin-bottom:3%;
+}
+
+
+
+#slider .slides {
+    display: block;
+	width:6000px;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+}
+
+#slider .slide {
+    float: left;
+    list-style-type: none;
+    height: 400px;
+    background-color:white;
+
+}
+
+.static {
+    float: left;
+    list-style-type: none;
+    width: 500px;
+    height: 400px;
+}
+.form-group{
+	margin:0;
+}
+#followers {
+    width: 90%;
+    height: 40%;
+	 border-radius: 10px;
+	 overflow-y:auto;
+    overflow-x:hidden;
+	margin-left:5%;
+	margin-top:3%;
+	margin-bottom:3%;
+}
+#followers .list {
+    list-style-type: none;
+	background-color:white;
+	 border-bottom-style: solid;
+    height: 20%;
+	margin:0;
+	padding:0;
+}
+
+.dynamiclist {
+    list-style-type: none;
+	background-color:white;
+	 border-bottom-style: solid;
+    height: 20%;
+	margin:0;
+	padding:0;
+}
+#followers .follo{
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container .element{
+	height:10%;
+	width:100%;
+	background-color:black;
+}
+
+.img-circle{
+  height:30%;
+  width:20%;
+  margin-left:40%;
+  margin-right:40%;
+  margin-top:10%}
+  
+  
+.container{
+    margin-top:20%;
+    width:90%;
+	 border-radius: 25px;
+	background-color:#80dfff;
+	overflow: hidden;
+}
+
+.container  .container{
+	margin-top:3%;
+	margin-bottom:3%;
+    width:90%;
+	border-radius: 15px;
+	background-color:black;
+	overflow: hidden;
+}
+
+.col-md-6{
+background-color: #e6e6e6;
+}
+
+/* helper css, since we don't have images */
+.image{
+	height:50%;
+    width:40%;
+    margin-left: auto;
+	margin-right: auto;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	display: block;
+	
+}
+
+video{
+	height:50%;
+    width:40%;
+    margin-left: auto;
+	margin-right: auto;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	display: block;
+	
+}
+.slide1{background-color:blue;}
+.slide2{background-color:green;}
+.slide3{background-color:red;}
+.slide4{background-color:yellow;}
+.slide5{background-color:grey;}
+.slide6{background-color:pink;}
+.slide7{background-color:orange;}
+.slide8{background-color:#80ff80;}
+.slide9{background-color:black;}
+.slide10{background-color:#996600;}
+body, html, .container-fluid {
+         height: 100%;
+    }
