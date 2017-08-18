@@ -63,7 +63,7 @@
                  $('body').on('change', function(){  //this is necessary because li is adding dynamically in ul when user types something
 		  console.log("now");                //so the body is changing
 	          $("#dynamic li").on("click",function(){  //when user clicks on screen_name of follower
-                          $.ajax({url: "kikkk.php?q="+$(this).text(),dataType:"json",success: function(result){//query is sent to kikkk.php
+                          $.ajax({url: "ajaxrequest.php?q="+$(this).text(),dataType:"json",success: function(result){//query is sent to kikkk.php
                             var count=Object.keys(result).length;          
 		            var $slider = $('#slider');//div
                             var xyz=$slider.width();//ul
@@ -133,7 +133,7 @@
                    
 	 $("#dynamic li").on("click",function(){
                    alert("for"+$(this).text());
-                          $.ajax({url: "kikkk.php?q="+$(this).text(),dataType:"json",success: function(result){
+                          $.ajax({url: "ajaxrequest.php?q="+$(this).text(),dataType:"json",success: function(result){
                               var count=Object.keys(result).length;
 						   alert(count+"numer of elements");           
 		            var $slider = $('#slider');//div
