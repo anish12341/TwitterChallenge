@@ -5,14 +5,14 @@
   <link rel="stylesheet" href="/bower_components/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="slideshow.css">
   <script src="ss.js"></script>
-<?php
-				    ?>
 <script>
 	 var screennames=<?php echo json_encode($screennames); ?>;
         var i,flag;
        var str;
 	  $(document).ready(function(){
-	   $("input").on("keyup", function(){
+         //$("input"). all of these are for follower searching 
+         //screennames is an array which contains followerss' screen_names, which was initialized and defined in index.php
+	   $("input").on("keyup", function(){                                        //when user starts typing
 		flag=0;
                 str=this.value;
                     if(this.value.length>=1){
@@ -20,10 +20,8 @@
                          if(screennames[i].toLowerCase().indexOf(str)>=0){
                            $("#dynamic").append('<li style="list-style-type: none;background-color:white;border-bottom-style: solid;height: 20%;margin:0;padding:0;">'+screennames[i]+'</li>');
                               flag=1;
-						  //$(ul).remove();
-						  //alert(screennames[i]);
                         }
-			else{
+			else{                                                         //if there is no match in followers list
 			if(flag==0){
 				 $('#dynamic li').each(function(){
 			         $(this).hide();
@@ -37,16 +35,16 @@
 		         $(this).hide();
 		  });
 	}
-                        // do search for this.value here
+                       
     });
-			  $("input").on("click",function(){
+			  $("input").on("click",function(){                  //when user click on search bar all of the contents of ul disappears
 				
 				  $('#dynamic li').each(function(){
 					  $(this).hide();
 				  });
 				  
 			  });
-			  $("input").on("blur",function(){
+			  $("input").on("blur",function(){               //when user clicks away  ul is restored based on the condition
 				  var i;
 				  if(str.length==0){
 				  var ul=document.getElementById("dynamic");
@@ -59,63 +57,51 @@
 				  }
 				  
 			  });
-                 $('body').on('change', function(){
-		  console.log("now");
-	          $("#dynamic li").on("click",function(){
-                   alert("for"+$(this).text());
-                          $.ajax({url: "kikkk.php?q="+$(this).text(),dataType:"json",success: function(result){
-                              var count=Object.keys(result).length;
-						   alert(count+"numer of elements");           
+		  
+     //From this to end of the script is ajax part to change content of slideshow dynamically
+		  
+                 $('body').on('change', function(){  //this is necessary because li is adding dynamically in ul when user types something
+		  console.log("now");                //so the body is changing
+	          $("#dynamic li").on("click",function(){  //when user clicks on screen_name of follower
+                          $.ajax({url: "kikkk.php?q="+$(this).text(),dataType:"json",success: function(result){//query is sent to kikkk.php
+                            var count=Object.keys(result).length;          
 		            var $slider = $('#slider');//div
-                            var xyz=$slider.width();
-                            alert(xyz+"when clicked")
+                            var xyz=$slider.width();//ul
                             var $slideContainer = $('.slides', $slider);//ul
-	                     
-		             var $slides = $('.slide', $slider);//li
-	                     
-                              
-		            console.log(result);
+	                    var $slides = $('.slide', $slider);//li               
+                             console.log(result);            //gives back the json object in log 
 				//	alert(result[0][0]);
 		            $slides.remove();
 		            if(result["notweet"]=="No tweets yet"){
-                    $("#slides").append('<li class="slide"><h1>no tweets yet<h1></li>');
-                   var $slideContainer = $('.slides', $slider);//ul
-                       $slideContainer.width(width);
-                    $("#slides li").css("width",width);
+                                $slideContainer.append('<li class="slide"><h1>no tweets yet<h1></li>');
+                                 $slideContainer.width(width);
+                                 $slides.css("width",width);
 				 }
 				 else{
-                        var styleon="float:left;list-style-type: none;width:"+xyz+"px;height: 400px;background-color:white;";
-var stylemedia="height:50%;width:40%;margin-left: auto;margin-right: auto;margin-top: 2%;margin-bottom: 2%;display: block;";
-
-			 var width=$slider.width();
-                        
-			  
-	                         $slideContainer.width(count*width);
-				var width=$slideContainer.width();
-                                  
-                                 alert(width+"after assignment");
-			       var i;
-			 for(i=0;i<count;i++){
+                                    var styleon="float:left;list-style-type: none;width:"+xyz+"px;height: 400px;background-color:white;";
+                                    var stylemedia="height:50%;width:40%;margin-left: auto;margin-right: auto;margin-top: 2%;margin-bottom: 2%;display: block;";
+			             var width=$slider.width();
+                                      $slideContainer.width(count*width);
+				     var width=$slideContainer.width();
+                                      var i;
+			                    for(i=0;i<count;i++){
 			  if(result[i][0]!=null&&result[i][1]==null&&result[i][2]==null){
-				alert("in");
-			 var create='<li style="'+styleon+'"><h3>'+result[i][0]+'</h3></li>';	  
+		          var create='<li style="'+styleon+'"><h3>'+result[i][0]+'</h3></li>';	  
 			  $slideContainer.append(create);
 		           $slides.width(xyz);
-                            alert(create);
-                           alert($slides.width()+"while creating dynamically");
                                }
 			 else if(result[i][0]==null){
 			    if(result[i][1]!=null){
 		 var create='<li style="'+styleon+'"><img style="'+stylemedia+'" src="'+result[i][1]+'"></li>';
                               $slideContainer.append(create);
-	                            $slides.width(xyz); 
-				alert("photoonly and size");
+	                       $slides.width(xyz); 
+			
 							  }
 			    else if(result[i][2]!=null){
 		  var create='<li style="'+styleon+'"><video style="'+stylemedia+'" controls><source src="'+result[i][2]+'" type="video/mp4"></li>';
                               $slideContainer.append(create);
 				$slides.width(xyz); 
-                                 alert("videoonly");
+                                 
 							   
 							  }
 							  }
@@ -124,13 +110,13 @@ var stylemedia="height:50%;width:40%;margin-left: auto;margin-right: auto;margin
 	            var create='<li style="'+styleon+'"><h3>'+result[i][0]+'</h3><img style="'+stylemedia+'"  src="'+result[i][1]+'"></li>';
                                $slideContainer.append(create);							 
 	                            $slides.width(xyz);
-					alert("phototext");
+					
 							  }
 		    else if(result[i][2]!=null){
 	 	  var create='<li style="'+styleon+'"><h3>'+result[i][0]+'</h3><video style="'+stylemedia+'" controls><source src="'+result[i][2]+'" type="video/mp4"></li>';
                                $slideContainer.append(create);							 
 	                            $slides.width(xyz);
-                                     alert("videotext");
+                                     
 							  }
 							  }
 							  
@@ -176,64 +162,53 @@ var stylemedia="height:50%;width:40%;margin-left: auto;margin-right: auto;margin
 			  
 	                         $slideContainer.width(count*width);
 				var width=$slideContainer.width();
-                                  
-                                 alert(width+"after assignment");
-			       var i;
+                	       var i;
 			 for(i=0;i<count;i++){
-			  if(result[i][0]!=null&&result[i][1]==null&&result[i][2]==null){
-				alert("in");
-			 var create='<li style="'+styleon+'"><h3>'+result[i][0]+'</h3></li>';	  
+			  if(result[i][0]!=null&&result[i][1]==null&&result[i][2]==null){				
+			  var create='<li style="'+styleon+'"><h3>'+result[i][0]+'</h3></li>';	  
 			  $slideContainer.append(create);
 		           $slides.width(xyz);
-                            alert(create);
-                           alert($slides.width()+"while creating dynamically");
                                }
 			 else if(result[i][0]==null){
 			    if(result[i][1]!=null){
 		 var create='<li style="'+styleon+'"><img style="'+stylemedia+'" src="'+result[i][1]+'"></li>';
                               $slideContainer.append(create);
 	                            $slides.width(xyz); 
-				alert("photoonly and size");
 							  }
 			    else if(result[i][2]!=null){
 		  var create='<li style="'+styleon+'"><video style="'+stylemedia+'" controls><source src="'+result[i][2]+'" type="video/mp4"></li>';
                               $slideContainer.append(create);
-				$slides.width(xyz); 
-                                 alert("videoonly");
-							   
-							  }
-							  }
+				$slides.width(xyz);                
+			    }
+		  }
 		 else if(result[i][0]!=null){
 		     if(result[i][1]!=null){
 	            var create='<li style="'+styleon+'"><h3>'+result[i][0]+'</h3><img style="'+stylemedia+'"  src="'+result[i][1]+'"></li>';
                                $slideContainer.append(create);							 
 	                            $slides.width(xyz);
-					alert("phototext");
+					
 							  }
 		    else if(result[i][2]!=null){
 	 	  var create='<li style="'+styleon+'"><h3>'+result[i][0]+'</h3><video style="'+stylemedia+'" controls><source src="'+result[i][2]+'" type="video/mp4"></li>';
                                $slideContainer.append(create);							 
 	                            $slides.width(xyz);
-                                     alert("videotext");
 							  }
-							  }
-							  
-							  
-					 
+						  }
+			
 					 }
 					 
 				 }
 				 
-            }});
+                        }});
                 
-               });
+           });
 		
 });
 			  </script>
 </head>
 <body>
 <div class="container-fluid">
-<div class="col-md-3"></div><?php echo $screenname;?>
+<div class="col-md-3"></div>
 <div class="col-md-6">
   <img src="<?php echo $profilepic;?>" class="img-circle " >
 <center><h1 ><?php echo $screenname;?></h1></center>
@@ -246,12 +221,6 @@ var stylemedia="height:50%;width:40%;margin-left: auto;margin-right: auto;margin
                     <?php
                        include 'forslideshow.php';
                    anish();?>
-                    <!--<li class="slide slide1">slide1</li>
-                    <li class="slide slide2">slide2</li>
-                    <li class="slide slide3">slide3</li>
-                    <li class="slide slide4">slide4</li>
-                    <li class="slide slide5">slide5</li>
-                    <li class="slide slide1">slide1</li>-->
                 </ul>
             </div>
 			</div>
