@@ -1,5 +1,5 @@
 # TwitterTimelineChallenge
-this is for rtcamp recruitments
+this is for rtcamp recruitments(UPDATE:Do refer Update and Website flow below for better understanding)
 ## Getting Started
 In this project there is a home page through which user logs in to their respective twitter account and gets access to their tweets as well as followers list.
 ## Technologies Used 
@@ -10,3 +10,14 @@ https://github.com/abraham/twitteroauth to interact with Twitter API
 https://timelinechallenge.000webhostapp.com/
 ## Update 
 Updating files daily to explain how each file work until all files are done , check comments in each file .
+## Website Flow
+index.php 
+   if(!$_SESSION['acess_token']) is set
+        ---->content.php
+   else 
+        ---->tweets.php is included in index.php
+             inside tweets.php
+                   ---->slideshow.css
+                   ---->ss.js for jquery slide show
+                   ----><script></script> contains code for searching follower and ajax code 
+                   ---->general layout of website
