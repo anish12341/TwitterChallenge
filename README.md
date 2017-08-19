@@ -1,5 +1,5 @@
 # TwitterTimelineChallenge
-this is for rtcamp recruitments(UPDATE:Do refer Update and Website flow below for better understanding)
+this is for rtcamp recruitments(**UPDATE**:Do refer Update and Website flow below for better understanding)
 ## Getting Started
 In this project there is a home page through which user logs in to their respective twitter account and gets access to their tweets as well as followers list.
 ## Technologies Used 
@@ -12,6 +12,7 @@ https://timelinechallenge.000webhostapp.com/
 Updating files daily to explain how each file work until all files are done , check comments in each file .
 ## Website Flow
 index.php 
+
    if(!$_SESSION['acess_token']) is set     return
         ---->content.php
    else 
