@@ -12,7 +12,7 @@ https://timelinechallenge.000webhostapp.com/
 Updating files daily to explain how each file work until all files are done , check comments in each file .
 ## Website Flow
 index.php 
-   if(!$_SESSION['acess_token']) is set
+   if(!$_SESSION['acess_token']) is set  return
         ---->content.php
    else 
         ---->tweets.php is included in index.php
