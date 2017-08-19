@@ -1,10 +1,10 @@
-<html lang="en">
+<html lang="en">                //This is included from index.php
 <head>
   <title>Bootstrap Example</title>
       <script type = "text/javascript"  src = "/bower_components/jquery.min.js"></script>
   <link rel="stylesheet" href="/bower_components/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="slideshow.css">
-  <script src="ss.js"></script>
+  <link rel="stylesheet" type="text/css" href="slideshow.css">           
+  <script src="ss.js"></script>     //slideshow jquery
 <script>
 	 var screennames=<?php echo json_encode($screennames); ?>;
         var i,flag;
@@ -61,17 +61,17 @@
      //From this to end of the script is ajax part to change content of slideshow dynamically
 		  
                  $('body').on('change', function(){  //this is necessary because li is adding dynamically in ul when user types something
-		  console.log("now");                //so the body is changing
+		                                     //so the body is changing
 	          $("#dynamic li").on("click",function(){  //when user clicks on screen_name of follower
                           $.ajax({url: "ajaxrequest.php?q="+$(this).text(),dataType:"json",success: function(result){//query is sent to kikkk.php
-                            var count=Object.keys(result).length;          
+                            				   //RESULT is of the form [[text,photo,video],[text,photo,video].....]
+		            var count=Object.keys(result).length;          
 		            var $slider = $('#slider');//div
                             var xyz=$slider.width();//ul
                             var $slideContainer = $('.slides', $slider);//ul
 	                    var $slides = $('.slide', $slider);//li               
                              console.log(result);            //gives back the json object in log 
-				//	alert(result[0][0]);
-		            $slides.remove();
+		             $slides.remove();               //Empty the ul so new li slides can be added
 		            if(result["notweet"]=="No tweets yet"){
                                 $slideContainer.append('<li class="slide"><h1>no tweets yet<h1></li>');
                                  $slideContainer.width(width);
@@ -83,9 +83,9 @@
 			             var width=$slider.width();
                                       $slideContainer.width(count*width);
 				     var width=$slideContainer.width();
-                                      var i;
+                                      var i;                          
 			                    for(i=0;i<count;i++){
-			  if(result[i][0]!=null&&result[i][1]==null&&result[i][2]==null){
+			  if(result[i][0]!=null&&result[i][1]==null&&result[i][2]==null){  //result[i][0] is text , result[i][1] is photo , result[i][2] is video
 		          var create='<li style="'+styleon+'"><h3>'+result[i][0]+'</h3></li>';	  
 			  $slideContainer.append(create);
 		           $slides.width(xyz);
@@ -131,7 +131,7 @@
                });
 			  });
                    
-	 $("#dynamic li").on("click",function(){
+	 $("#dynamic li").on("click",function(){                 //same as above when body has not changed when doing for the first time
                    alert("for"+$(this).text());
                           $.ajax({url: "ajaxrequest.php?q="+$(this).text(),dataType:"json",success: function(result){
                               var count=Object.keys(result).length;
@@ -241,7 +241,7 @@ var stylemedia="height:50%;width:40%;margin-left: auto;margin-right: auto;margin
 					</form>
 			<ul class="follo" id="dynamic">
 			       <?php
-				   tweets:
+				   
 				     
 				    for($i=0;$i<10;$i++)
 					{
