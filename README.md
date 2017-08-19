@@ -13,7 +13,8 @@ Updating files daily to explain how each file work until all files are done , ch
 ## Website Flow
 index.php 
 
-   if(!$_SESSION['acess_token']) is set     return
+   if(!$_SESSION['acess_token']) is set   
+   
         ---->content.php
    else 
         ---->tweets.php is included in index.php
