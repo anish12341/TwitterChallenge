@@ -17,9 +17,15 @@ index.php
    
         ---->content.php
    else 
+   
         ---->tweets.php is included in index.php
+        
              inside tweets.php
+             
                    ---->slideshow.css
+                   
                    ---->ss.js for jquery slide show
+                   
                    ----><script></script> contains code for searching follower and ajax code 
+                   
                    ---->general layout of website
