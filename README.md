@@ -26,6 +26,10 @@ index.php
                    
                    ---->ss.js for jquery slide show
                    
+                   ---->forslideshow.php to fill up content in slide show
+                   
                    ----><script></script> contains code for searching follower and ajax code 
+                      
+                         ---->ajaxrequest.php?q=screen_name ajax request url
                    
                    ---->general layout of website
