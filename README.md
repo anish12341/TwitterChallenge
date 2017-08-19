@@ -13,7 +13,7 @@ Updated all files explain how each file , check comments in each file .
 ## Website Flow
 index.php 
 
-   if(!$_SESSION['acess_token']) is set   
+   if(!$_SESSION['access_token']) is set   
    
         ---->content.php
    else 
