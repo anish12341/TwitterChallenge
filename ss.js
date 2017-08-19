@@ -13,7 +13,7 @@ $(function() {                     //FOR SLIDESHOW FUNCTIONING USING JQUERY
 	$slideContainer.width(10*width);
     var $slides = $('.slide', $slider);                  //li
 	$slides.width(width);
-      alert($slides.width(width)+"in starting");
+    
 	
 
     var interval;
