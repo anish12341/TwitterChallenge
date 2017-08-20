@@ -1,7 +1,8 @@
 <html lang="en">                //This is included from index.php
 <head>
-  <title>Bootstrap Example</title>
-      <script type = "text/javascript"  src = "/bower_components/jquery.min.js"></script>
+  <title>Tweets and Followers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+   <script type = "text/javascript"  src = "/bower_components/jquery.min.js"></script>
   <link rel="stylesheet" href="/bower_components/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="slideshow.css">           
   <script src="ss.js"></script>     //slideshow jquery
