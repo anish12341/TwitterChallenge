@@ -1,5 +1,5 @@
 # TwitterTimelineChallenge
-this is for rtcamp recruitments(**UPDATE:Do refer Update and Website flow below for better understanding**)
+(**UPDATE:Do refer Update and Website flow below for better understanding**)
 ## Getting Started
 In this project there is a home page through which user logs in to their respective twitter account and gets access to their tweets as well as followers list.
 ## Technologies Used 
